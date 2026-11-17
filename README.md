@@ -9,9 +9,7 @@ Flags and answers are not published. The reports describe the method and the evi
 | [Brutus](brutus) | Hack The Box Sherlock | auth.log, wtmp | Brute force, session tracking, persistence | Draft |
 | [Hammered](hammered) | CyberDefenders | auth.log | Failed-login analysis, attacking IPs | Draft |
 | [Logjammer](logjammer) | Hack The Box Sherlock | Windows .evtx | 4624, firewall rules, audit policy changes | Draft |
-| [XlmRat](xlmrat) | CyberDefenders | Malware / RAT artifacts | IOC extraction | To do |
-| [Compromised WordPress](wordpress-compromise) | Blue Team Labs Online | Web server logs | Web attack analysis | To do |
-
+| [Unit42](unit42/README.md) | Hack The Box Sherlock | Sysmon .evtx (Splunk) | Process creation, DNS, file creation, process tree  
 ## Report template
 
 See [TEMPLATE.md](TEMPLATE.md).
