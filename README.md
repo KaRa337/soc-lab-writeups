@@ -4,7 +4,7 @@ Incident reports from hands-on blue team labs. These are training exercises, not
 Every report follows the same format: **Summary → Timeline → Evidence → IOCs → MITRE ATT&CK → Verdict and next steps**.
 Flags and answers are not published. The reports describe the method and the evidence.
 
-| Lab | Platform | Data | Main skills 
+| Lab | Platform | Data | Main skills |
 |---|---|---|---|---|
 | [Brutus](brutus) | Hack The Box Sherlock | auth.log, wtmp | Brute force, session tracking, persistence 
 | [Hammered](hammered) | CyberDefenders | auth.log | Failed-login analysis, attacking IPs 
