@@ -6,7 +6,7 @@
 **Tools:** Splunk (SPL), PECmd, Timeline Explorer
 
 ## Summary
-[2-3 sentences: what attack it was, which account, what the attacker ran.]
+On 2024-05-21, between 03:05 and 03:20 UTC, the account alonzo.spire@FORELA.LOCAL requested Kerberos service tickets with RC4 encryption (event 4769), including for the MSSQLService service account, from the internal host 172.17.79.129. Prefetch shows that Rubeus.exe was executed from the user's Downloads folder. This pattern is consistent with Kerberoasting (T1558.003): the tickets can be cracked offline, which is not visible in the logs.
 
 ## Investigation approach
 | Step | Query / tool | Why |
@@ -16,21 +16,23 @@
 | Weak encryption | `index=<ww> "0x17" EventCode=4769` | RC4 tickets, typical for Kerberoasting |
 | Process creation | `index=<ww> EventCode=4688` | Which programs ran and with what command line |
 | PowerShell | `index=<ww> EventCode=4104` | Script block contents |
-| Group enumeration | `index=<ww> EventCode=4799` | [what you found] |
 | Execution evidence | PECmd, then Timeline Explorer | Prefetch shows the attacker tool was executed |
 
 ## Timeline (UTC)
 | Time | Event | Event ID / source |
 |---|---|---|
-| [time] | [what happened] | [ID] |
+| 2024-05-21 03:05:54 | First 4769 service ticket request with RC4 (0x17) | 4769 |
+| 2024-05-21 03:16:32 | Rubeus.exe executed from the user's Downloads folder | Prefetch |
+| 2024-05-21 03:20:24 | Last 4769 request with RC4 (0x17) | 4769 |
 
 ## IOCs
 | Type | Value | Context |
 |---|---|---|
-| Tool | [name] | Found in Prefetch |
-| Account | [user] | Requested the tickets |
-| Client IP | [IP] | Source of the ticket requests |
-| Targeted service | [name] | Service account whose ticket was requested |
+| Tool | Rubeus.exe | Kerberos abuse tool, found in Prefetch |
+| Path | C:\Users\Alonzo.spire\Downloads\Rubeus.exe | Where the tool was run from |
+| Account | alonzo.spire@FORELA.LOCAL | Requested the service tickets |
+| Client IP | 172.17.79.129 | Internal source of the ticket requests |
+| Targeted service | MSSQLService | Service account whose ticket was requested |
 
 ## MITRE ATT&CK
 | Tactic | Technique | Evidence |
