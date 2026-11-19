@@ -15,7 +15,7 @@
 | Kerberos tickets | `index=<ww> EventCode=4769` | Service ticket requests (Kerberoasting target) |
 | Weak encryption | `index=<ww> "0x17" EventCode=4769` | RC4 tickets, typical for Kerberoasting |
 | Process creation | `index=<ww> EventCode=4688` | Which programs ran and with what command line |
-| PowerShell | `index=<idx> EventCode=4104` | Script block contents |
+| PowerShell | `index=<ww> EventCode=4104` | Script block contents |
 | Group enumeration | `index=<ww> EventCode=4799` | [what you found] |
 | Execution evidence | PECmd, then Timeline Explorer | Prefetch shows the attacker tool was executed |
 
